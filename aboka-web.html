@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Website</title>
+    <style>
+        body {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            margin: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .navigation-bar {
+            position: -webkit-sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navigation-bar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navigation-bar li {
+            margin-right: 20px;
+        }
+
+        .navigation-bar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .navigation-bar a:hover {
+            color: gray;
+        }
+
+        .category {
+            display: none;
+        }
+
+        .category.active {
+            display: block;
+        }
+
+        .logo {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png');
+    background-repeat: no-repeat;
+    background-size: cover; /* Changed from 'contain' to 'cover' */
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+        .example {
+            margin-bottom: 20px;
+        }
+
+        .example img {
+            width: 100%;
+            height: auto;
+        }
+
+        .example h3 {
+            margin-top: 10px;
+        }
+
+        .example p {
+            margin-bottom: 10px;
+        }
+
+        .example .price {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .language-select {
+            display: flex;
+            align-items: center;
+        }
+
+        .language-select select {
+            appearance: all;
+            background-color: black;
+            border: none;
+            font-size: 24px;
+            margin-left: 10px;
+            color: white;
+        }
+
+        .language-select select:focus {
+            outline: none;
+        }
+
+        @media screen and (max-width: 800px) {
+            .navigation-bar {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .navigation-bar ul {
+                margin-bottom: 10px;
+            }
+            .navigation-bar li {
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation-bar">
+        <ul>
+            <li><a href="#" onclick="toggleCategory('food')"><span id="foodLabel">Food</span></a></li>
+            <li><a href="#" onclick="toggleCategory('drinks')"><span id="drinksLabel">Drinks</span></a></li>
+            <li><a href="#" onclick="toggleCategory('shisha')"><span id="shishaLabel">Shisha</span></a></li>
+        </ul>
+        <div class="language-select">
+            <span>&#x1F30D;</span>
+            <select id="language" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="ar">Arabic</option>
+                <option value="ku">Kurdish (Sorani)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="category" id="food">
+        <h2><span id="foodCategoryLabel">Food</span></h2>
+        <div class="example">
+            <img src="food_image_1.jpg" alt="Food Example 1">
+            <h3>Example 1</h3>
+            <p>Food example description.</p>
+            <p class="price">$10</p>
+        </div>
+        <div class="example">
+            <img src="food_image_2.jpg" alt="Food Example 2">
+            <h3>Example 2</h3>
+            <p>Food example description.</p>
+            <p class="price">$12</p>
+        </div>
+        <div class="example">
+            <img src="food_image_3.jpg" alt="Food Example 3">
+            <h3>Example 3</h3>
+            <p>Food example description.</p>
+            <p class="price">$8</p>
+        </div>
+    </div>
+
+    <div class="category" id="drinks">
+        <h2><span id="drinksCategoryLabel">Drinks</span></h2>
+        <div class="example">
+            <img src="drinks_image_1.jpg" alt="Drinks Example 1">
+            <h3>Example 1</h3>
+            <p>Drinks example description.</p>
+            <p class="price">$5</p>
+        </div>
+        <div class="example">
+            <img src="drinks_image_2.jpg" alt="Drinks Example 2">
+            <h3>Example 2</h3>
+            <p>Drinks example description.</p>
+            <p class="price">$7</p>
+        </div>
+        <div class="example">
+            <img src="drinks_image_3.jpg" alt="Drinks Example 3">
+            <h3>Example 3</h3>
+            <p>Drinks example description.</p>
+            <p class="price">$6</p>
+        </div>
+    </div>
+
+    <div class="category active" id="shisha">
+        <h2><span id="shishaCategoryLabel">Shisha</span></h2>
+        <div class="example">
+            <img src="shisha_image_1.jpg" alt="Shisha Example 1">
+            <h3>Example 1</h3>
+            <p>Shisha example description.</p>
+            <p class="price">$15</p>
+        </div>
+        <div class="example">
+            <img src="shisha_image_2.jpg" alt="Shisha Example 2">
+            <h3>Example 2</h3>
+            <p>Shisha example description.</p>
+            <p class="price">$12</p>
+        </div>
+        <div class="example">
+            <img src="shisha_image_3.jpg" alt="Shisha Example 3">
+            <h3>Example 3</h3>
+            <p>Shisha example description.</p>
+            <p class="price">$10</p>
+        </div>
+    </div>
+
+    <div class="logo"></div>
+
+    <script>
+        function changeLanguage() {
+            var languageSelect = document.getElementById("language");
+            var selectedLanguage = languageSelect.options[languageSelect.selectedIndex].value;
+
+            // Perform language-specific translations
+            if (selectedLanguage === "ar") {
+                document.body.style.direction = "rtl";
+                document.getElementById("foodLabel").textContent = "طعام";
+                document.getElementById("drinksLabel").textContent = "مشروبات";
+                document.getElementById("shishaLabel").textContent = "الشيشة";
+                document.getElementById("foodCategoryLabel").textContent = "طعام";
+                document.getElementById("drinksCategoryLabel").textContent = "مشروبات";
+                document.getElementById("shishaCategoryLabel").textContent = "الشيشة";
+            } else if (selectedLanguage === "ku") {
+                document.body.style.direction = "rtl";
+                document.getElementById("foodLabel").textContent = "خواردن";
+                document.getElementById("drinksLabel").textContent = "خوارردنوکان";
+                document.getElementById("shishaLabel").textContent = "شیشا";
+                document.getElementById("foodCategoryLabel").textContent = "خواردن";
+                document.getElementById("drinksCategoryLabel").textContent = "خوارردنوه کان";
+                document.getElementById("shishaCategoryLabel").textContent = "شیشا";
+            } else {
+                document.body.style.direction = "ltr";
+                document.getElementById("foodLabel").textContent = "Food";
+                document.getElementById("drinksLabel").textContent = "Drinks";
+                document.getElementById("shishaLabel").textContent = "Shisha";
+                document.getElementById("foodCategoryLabel").textContent = "Food";
+                document.getElementById("drinksCategoryLabel").textContent = "Drinks";
+                document.getElementById("shishaCategoryLabel").textContent = "Shisha";
+            }
+        }
+
+        function toggleCategory(category) {
+            var categoryElement = document.getElementById(category);
+            var isActive = categoryElement.classList.contains("active");
+
+            // Hide all categories
+            var categories = document.getElementsByClassName("category");
+            for (var i = 0; i < categories.length; i++) {
+                categories[i].classList.remove("active");
+            }
+
+            // Show the selected category
+            if (!isActive) {
+                categoryElement.classList.add("active");
+            }
+        }
+
+        // Set the initial language
+        changeLanguage();
+    </script>
+</body>
+</html>
